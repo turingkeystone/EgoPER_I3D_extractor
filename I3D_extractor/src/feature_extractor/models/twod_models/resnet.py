@@ -263,7 +263,7 @@ def resnet(depth, num_classes, without_t_stride, groups, temporal_module_name,
 
     if imagenet_pretrained:
         # state_dict = model_zoo.load_url(model_urls['resnet{}'.format(depth)], map_location='cpu')
-        state_dict = torch.load("ckpt/resnet50-19c8e357.pth")
+        state_dict = torch.load("ckpt/resnet50-19c8e357.pth", map_location='cpu', weights_only=False)
         state_dict.pop('fc.weight', None)
         state_dict.pop('fc.bias', None)
         model.load_state_dict(state_dict, strict=False)
